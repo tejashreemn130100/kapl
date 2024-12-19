@@ -3,151 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
+    <title>Happy Birthday!</title>
     <style>
-        body {
+        /* General Styles */
+        body, html {
             margin: 0;
+            padding: 0;
+            height: 100%;
             overflow: hidden;
-            background-color: #ffffff;
+            background-color: #fdf4f5;
+            font-family: 'Arial, sans-serif';
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            color: #fff;
         }
-        .birthday-card {
+
+        /* Background Animation */
+        body {
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            animation: gradient 8s ease infinite alternate;
+        }
+        @keyframes gradient {
+            0% {
+                background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            }
+            100% {
+                background: linear-gradient(to bottom, #a18cd1, #fbc2eb);
+            }
+        }
+
+        /* Birthday Card */
+        .card {
             position: relative;
             width: 600px;
             height: 400px;
-            background-color: #fff;
-            border: 5px solid #ff69b4;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+            background: #ffffff;
+            border-radius: 20px;
             text-align: center;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            animation: bounce-in 1.5s ease-out;
         }
-        h1 {
-            margin: 0;
-            font-size: 50px;
-            color: #ff1493;
-            text-shadow: 2px 2px 5px #000;
-            padding-top: 20px;
-        }
-        .decoration {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .flower {
-            font-size: 24px;
-            color: #ff4500;
-        }
-        .confetti {
-            position: absolute;
-            bottom: 10px;
-            width: 10px;
-            height: 10px;
-            background-color: red;
-            border-radius: 50%;
-            animation: confetti-fall 2s linear infinite;
-        }
-        @keyframes confetti-fall {
+
+        @keyframes bounce-in {
             0% {
-                transform: translateY(0) translateX(0);
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
             }
             100% {
-                transform: translateY(-100vh) translateX(50px);
+                transform: scale(1);
             }
         }
 
-        /* Balloons */
-        .balloon {
-            position: absolute;
-            bottom: -100px;
-            width: 60px;
-            height: 80px;
-            background-color: lightblue;
-            border-radius: 50%;
-            animation: float 5s infinite ease-in-out;
+        .card h1 {
+            font-size: 50px;
+            margin-top: 50px;
+            color: #ff4081;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        .balloon::before {
-            content: "";
+        .card p {
+            font-size: 18px;
+            color: #444;
+            margin: 10px 40px;
+            line-height: 1.6;
+        }
+
+        /* Balloons Animation */
+        .balloon {
             position: absolute;
-            top: 70px;
-            left: 28px;
-            width: 4px;
-            height: 50px;
-            background: #aaa;
+            bottom: -150px;
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 8s infinite ease-in-out;
         }
 
         @keyframes float {
             0% {
-                transform: translateY(100vh) translateX(0);
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-50vh);
                 opacity: 1;
             }
             100% {
-                transform: translateY(-120vh) translateX(20px);
-                opacity: 0.5;
+                transform: translateY(-100vh);
+                opacity: 0;
             }
         }
 
         .balloon:nth-child(1) {
             left: 10%;
-            background-color: red;
-            animation-duration: 6s;
+            background-color: #ff4081;
+            animation-duration: 7s;
         }
         .balloon:nth-child(2) {
             left: 30%;
-            background-color: orange;
-            animation-duration: 5.5s;
+            background-color: #ff80ab;
+            animation-duration: 6s;
         }
         .balloon:nth-child(3) {
             left: 50%;
-            background-color: green;
-            animation-duration: 5s;
+            background-color: #ff9e80;
+            animation-duration: 8s;
         }
         .balloon:nth-child(4) {
             left: 70%;
-            background-color: blue;
-            animation-duration: 6s;
+            background-color: #ffc107;
+            animation-duration: 5s;
         }
         .balloon:nth-child(5) {
             left: 90%;
-            background-color: pink;
-            animation-duration: 7s;
+            background-color: #00bcd4;
+            animation-duration: 6.5s;
         }
 
-        /* Confetti Blasters */
-        .blaster {
+        /* Confetti */
+        .confetti {
             position: absolute;
-            bottom: 0;
-            width: 80px;
-            height: 100px;
-            background: url('https://i.imgur.com/lXH6k0z.png') no-repeat center;
-            background-size: contain;
+            width: 10px;
+            height: 10px;
+            background-color: #ff4081;
+            border-radius: 50%;
+            animation: fall 4s infinite ease-in-out;
         }
-        .blaster-left {
-            left: 10%;
-        }
-        .blaster-right {
-            right: 10%;
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Main Birthday Card -->
-    <div class="birthday-card">
-        <h1>Happy Birthday!</h1>
-        <div class="decoration">
-            <div class="flower">🌸</div>
-            <div class="flower">🌼</div>
-            <div class="flower">🌸</div>
-            <div class="flower">🌼</div>
-        </div>
-    </div>
-
     <!-- Balloons -->
     <div class="balloon"></div>
     <div class="balloon"></div>
@@ -155,25 +156,30 @@
     <div class="balloon"></div>
     <div class="balloon"></div>
 
-    <!-- Confetti Blasters -->
-    <div class="blaster blaster-left"></div>
-    <div class="blaster blaster-right"></div>
+    <!-- Birthday Card -->
+    <div class="card">
+        <h1>🎉 Happy Birthday! 🎉</h1>
+        <p>Wishing you a day filled with love, laughter, and happiness!<br>
+            May your year ahead be as bright and colorful as this day.</p>
+        <p>Enjoy your special day!</p>
+    </div>
 
     <!-- Confetti Animation -->
     <script>
         function createConfetti() {
-            const confettiContainer = document.querySelector("body");
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement("div");
-                confetti.classList.add("confetti");
-                confetti.style.left = Math.random() * window.innerWidth + "px";
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = Math.random() * window.innerHeight + 'px';
                 confetti.style.backgroundColor = getRandomColor();
-                confettiContainer.appendChild(confetti);
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
             }
         }
 
         function getRandomColor() {
-            const colors = ["#ff4500", "#ff1493", "#00ffff", "#32cd32", "#ff6347"];
+            const colors = ['#ff4081', '#ff80ab', '#ff9e80', '#ffc107', '#00bcd4'];
             return colors[Math.floor(Math.random() * colors.length)];
         }
 
