@@ -3,171 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>Happy Birthday from KAPL</title>
     <style>
-        /* General Body Styling */
-        body, html {
+        /* Body Styling */
+        body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
+            background: linear-gradient(to bottom, #FFD3E0, #FF9CA6);
+            height: 100vh;
             overflow: hidden;
-            background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
         }
 
-        /* Central Birthday Card */
+        /* Centered Birthday Card */
         .card {
-            position: absolute;
-            width: 600px;
-            height: 400px;
-            background-color: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             text-align: center;
-            z-index: 10;
-            animation: fadeIn 2s ease-out;
+            padding: 20px;
+            width: 350px;
+            z-index: 2;
+            position: relative;
         }
 
         .card h1 {
-            margin-top: 50px;
-            font-size: 50px;
-            color: #ff4081;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FF4081;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .card p {
-            color: #444;
-            font-size: 20px;
-            margin: 20px;
-            line-height: 1.6;
+            color: #333;
+            font-size: 1.1em;
+            margin: 0;
+            line-height: 1.5;
         }
 
-        .card p.signature {
-            margin-top: 30px;
-            font-size: 16px;
-            color: #666;
+        .from-kapl {
+            margin-top: 10px;
             font-style: italic;
+            color: #777;
         }
 
-        /* Fade-in Animation for Card */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
+        /* KAPL Logo */
+        .logo {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            z-index: 3;
         }
 
-        /* Realistic Balloons */
+        /* Balloon Animation */
         .balloon {
             position: absolute;
-            width: 100px;
-            height: 140px;
-            background-image: url('https://i.imgur.com/8ViF0CU.png'); /* Realistic Balloon Image */
-            background-size: contain;
-            background-repeat: no-repeat;
-            animation: floatBalloon 8s infinite ease-in-out;
-        }
-
-        @keyframes floatBalloon {
-            0% { transform: translateY(0px) translateX(0px); opacity: 0.9; }
-            50% { transform: translateY(-300px) translateX(20px); opacity: 1; }
-            100% { transform: translateY(-600px) translateX(-20px); opacity: 0.6; }
-        }
-
-        /* Balloons Position and Speed */
-        .balloon:nth-child(1) { left: 10%; animation-duration: 7s; }
-        .balloon:nth-child(2) { left: 25%; animation-duration: 8s; }
-        .balloon:nth-child(3) { left: 40%; animation-duration: 9s; }
-        .balloon:nth-child(4) { left: 55%; animation-duration: 6.5s; }
-        .balloon:nth-child(5) { left: 70%; animation-duration: 7.5s; }
-        .balloon:nth-child(6) { left: 85%; animation-duration: 5.5s; }
-
-        /* Blaster Styling */
-        .blaster {
-            position: absolute;
-            bottom: 0;
+            bottom: -150px;
             width: 80px;
-            height: 150px;
-            background: linear-gradient(to top, #ff5722, #ff8a65);
-            border-radius: 10px;
-            animation: popBlaster 1s infinite ease-in-out;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
         }
 
-        .blaster.left { left: 5%; }
-        .blaster.right { right: 5%; }
-
-        @keyframes popBlaster {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        .balloon:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .balloon:nth-child(2) {
+            left: 30%;
+            animation-delay: 1s;
+        }
+        .balloon:nth-child(3) {
+            left: 50%;
+            animation-delay: 2s;
+        }
+        .balloon:nth-child(4) {
+            left: 70%;
+            animation-delay: 3s;
+        }
+        .balloon:nth-child(5) {
+            left: 90%;
+            animation-delay: 4s;
         }
 
-        /* Confetti */
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-200px) scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-400px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Confetti Pop Animation */
         .confetti {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff4081;
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
             border-radius: 50%;
-            animation: fallConfetti 4s ease-in-out infinite;
+            animation: pop 3s linear infinite;
         }
 
-        @keyframes fallConfetti {
+        @keyframes pop {
             0% {
-                transform: translateY(0) translateX(0);
+                transform: translateY(0) scale(1);
                 opacity: 1;
             }
             100% {
-                transform: translateY(-300px) translateX(50px);
+                transform: translateY(300px) scale(0.5);
                 opacity: 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Balloons -->
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-
-    <!-- Blasters -->
-    <div class="blaster left"></div>
-    <div class="blaster right"></div>
-
-    <!-- Central Card -->
+    <!-- Birthday Card -->
     <div class="card">
         <h1>🎉 Happy Birthday! 🎉</h1>
-        <p>Wishing you a fantastic day full of joy, laughter, and fun!<br>
-           Have an amazing year ahead!</p>
-        <p class="signature">- From KAPL</p>
+        <p>Wishing you a fantastic day full of joy, laughter, and fun!</p>
+        <p>Have an amazing year ahead!</p>
+        <p class="from-kapl">- From KAPL</p>
     </div>
 
-    <!-- Confetti -->
+    <!-- Balloons -->
+    <img src="https://i.imgur.com/3y0Kc6v.png" alt="balloon" class="balloon">
+    <img src="https://i.imgur.com/3y0Kc6v.png" alt="balloon" class="balloon">
+    <img src="https://i.imgur.com/3y0Kc6v.png" alt="balloon" class="balloon">
+    <img src="https://i.imgur.com/3y0Kc6v.png" alt="balloon" class="balloon">
+    <img src="https://i.imgur.com/3y0Kc6v.png" alt="balloon" class="balloon">
+
+    <!-- Blaster Confetti -->
     <script>
-        // Function to Create Confetti
         function createConfetti() {
             for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * window.innerWidth + 'px';
-                confetti.style.backgroundColor = getRandomColor();
-                confetti.style.animationDelay = Math.random() * 2 + 's';
+                let confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.backgroundColor = randomColor();
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confetti.style.animationDelay = `${Math.random()}s`;
                 document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
             }
         }
 
-        // Random Confetti Colors
-        function getRandomColor() {
-            const colors = ['#ff4081', '#ff80ab', '#ff9e80', '#ffc107', '#00bcd4', '#8bc34a'];
+        function randomColor() {
+            const colors = ["#FF4081", "#FFD700", "#7CFC00", "#00BFFF", "#FF4500"];
             return colors[Math.floor(Math.random() * colors.length)];
         }
 
-        // Generate Confetti
-        createConfetti();
+        // Blaster Effect Trigger
+        setInterval(createConfetti, 2000);
     </script>
+
+    <!-- Company Logo -->
+    <img src="image.png" alt="KAPL Logo" class="logo">
 </body>
 </html>
