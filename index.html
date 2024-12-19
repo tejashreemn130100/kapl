@@ -41,9 +41,16 @@
 
         .card p {
             color: #444;
-            font-size: 18px;
+            font-size: 20px;
             margin: 20px;
             line-height: 1.6;
+        }
+
+        .card p.signature {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
         }
 
         /* Fade-in Animation for Card */
@@ -55,53 +62,45 @@
         /* Realistic Balloons */
         .balloon {
             position: absolute;
-            width: 60px;
-            height: 80px;
-            background: radial-gradient(circle at 30% 30%, #fff, transparent 50%);
-            border-radius: 50%;
-            box-shadow: inset -10px -10px 15px rgba(0, 0, 0, 0.2);
+            width: 100px;
+            height: 140px;
+            background-image: url('https://i.imgur.com/8ViF0CU.png'); /* Realistic Balloon Image */
+            background-size: contain;
+            background-repeat: no-repeat;
             animation: floatBalloon 8s infinite ease-in-out;
         }
 
         @keyframes floatBalloon {
-            0% { transform: translateY(0px) translateX(0px); opacity: 0.8; }
+            0% { transform: translateY(0px) translateX(0px); opacity: 0.9; }
             50% { transform: translateY(-300px) translateX(20px); opacity: 1; }
-            100% { transform: translateY(-600px) translateX(-20px); opacity: 0.5; }
+            100% { transform: translateY(-600px) translateX(-20px); opacity: 0.6; }
         }
 
-        /* Assign Balloons Different Colors and Speeds */
-        .balloon:nth-child(1) { left: 10%; background-color: #ff4081; animation-duration: 7s; }
-        .balloon:nth-child(2) { left: 20%; background-color: #ff80ab; animation-duration: 6s; }
-        .balloon:nth-child(3) { left: 35%; background-color: #ff9e80; animation-duration: 8s; }
-        .balloon:nth-child(4) { left: 55%; background-color: #ffc107; animation-duration: 6.5s; }
-        .balloon:nth-child(5) { left: 75%; background-color: #00bcd4; animation-duration: 7.5s; }
-        .balloon:nth-child(6) { left: 90%; background-color: #8bc34a; animation-duration: 5.5s; }
+        /* Balloons Position and Speed */
+        .balloon:nth-child(1) { left: 10%; animation-duration: 7s; }
+        .balloon:nth-child(2) { left: 25%; animation-duration: 8s; }
+        .balloon:nth-child(3) { left: 40%; animation-duration: 9s; }
+        .balloon:nth-child(4) { left: 55%; animation-duration: 6.5s; }
+        .balloon:nth-child(5) { left: 70%; animation-duration: 7.5s; }
+        .balloon:nth-child(6) { left: 85%; animation-duration: 5.5s; }
 
-        /* Blaster Effects */
+        /* Blaster Styling */
         .blaster {
             position: absolute;
             bottom: 0;
             width: 80px;
             height: 150px;
-            background: #ff5722;
+            background: linear-gradient(to top, #ff5722, #ff8a65);
             border-radius: 10px;
-            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.3);
+            animation: popBlaster 1s infinite ease-in-out;
         }
 
-        .blaster.left {
-            left: 5%;
-            animation: shake 1s infinite;
-        }
+        .blaster.left { left: 5%; }
+        .blaster.right { right: 5%; }
 
-        .blaster.right {
-            right: 5%;
-            animation: shake 1s infinite;
-        }
-
-        /* Blaster Shake Animation */
-        @keyframes shake {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
+        @keyframes popBlaster {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
         /* Confetti */
@@ -143,7 +142,8 @@
     <div class="card">
         <h1>🎉 Happy Birthday! 🎉</h1>
         <p>Wishing you a fantastic day full of joy, laughter, and fun!<br>
-            Have an amazing year ahead!</p>
+           Have an amazing year ahead!</p>
+        <p class="signature">- From KAPL</p>
     </div>
 
     <!-- Confetti -->
