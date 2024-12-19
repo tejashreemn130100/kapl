@@ -3,100 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday from KAPL</title>
+    <title>Happy Birthday Wishes</title>
     <style>
-        body, html {
+        body {
             margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .message {
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .footer span {
+            color: #ffcc00;
+        }
+
+        .balloons {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
+            z-index: 0;
         }
-        .container {
-            text-align: center;
-            position: relative;
-        }
-        .message {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-        }
-        .message h1 {
-            font-size: 2.5em;
-            color: #ff4081;
-            margin: 0;
-        }
-        .message p {
-            font-size: 1.2em;
-            color: #333;
-            margin: 10px 0 0;
-        }
-        .logo {
-            margin-top: 20px;
-            width: 150px;
-        }
+
         .balloon {
             position: absolute;
             bottom: -150px;
-            width: 100px;
-            animation: float 10s infinite ease-in-out;
+            width: 50px;
+            height: 70px;
+            background-color: red;
+            border-radius: 50%;
+            animation: floatUp 7s ease-in-out infinite;
         }
-        .balloon:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .balloon:nth-child(2) { left: 30%; animation-delay: 2s; }
-        .balloon:nth-child(3) { left: 50%; animation-delay: 4s; }
-        .balloon:nth-child(4) { left: 70%; animation-delay: 6s; }
-        .balloon:nth-child(5) { left: 90%; animation-delay: 8s; }
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-200px); }
-            100% { transform: translateY(0); }
-        }
-        .confetti {
+
+        .balloon::before {
+            content: '';
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff4081;
-            animation: fall 5s infinite;
+            bottom: -10px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background-color: #fff;
+            transform: translateX(-50%);
         }
-        @keyframes fall {
-            0% { transform: translateY(-100vh); }
-            100% { transform: translateY(100vh); }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(30px) translateY(-50%);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(-30px) translateY(-100%);
+                opacity: 0;
+            }
+        }
+
+        .balloon:nth-child(1) {
+            background-color: red;
+            left: 10%;
+            animation-duration: 6s;
+        }
+
+        .balloon:nth-child(2) {
+            background-color: blue;
+            left: 30%;
+            animation-duration: 5s;
+        }
+
+        .balloon:nth-child(3) {
+            background-color: green;
+            left: 50%;
+            animation-duration: 7s;
+        }
+
+        .balloon:nth-child(4) {
+            background-color: yellow;
+            left: 70%;
+            animation-duration: 6.5s;
+        }
+
+        .balloon:nth-child(5) {
+            background-color: pink;
+            left: 90%;
+            animation-duration: 5.5s;
         }
     </style>
 </head>
 <body>
+    <div class="balloons">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
     <div class="container">
-        <div class="message">
-            <h1>🎉 Happy Birthday! 🎉</h1>
-            <p>Wishing you a day filled with joy and a year filled with success.</p>
-            <p>- From KAPL</p>
-            <img src="your-logo.png" alt="KAPL Logo" class="logo">
+        <div class="logo">
+            <img src="/mnt/data/image.png" alt="KAPL Logo">
+        </div>
+        <h1>Happy Birthday!</h1>
+        <p>Dear Colleague,</p>
+        <p class="message">
+            On behalf of the entire KAPL family, we extend our warmest wishes for your birthday. May this day bring you immense joy, success, and memorable moments. You are a valued part of our team, and we celebrate your special day with heartfelt cheer!
+        </p>
+        <p>Have a fantastic birthday! 🎉</p>
+        <div class="footer">
+            <p>Best regards,</p>
+            <p><span>KAPL Team</span></p>
         </div>
     </div>
-    <script>
-        // Create balloons
-        for (let i = 0; i < 5; i++) {
-            const balloon = document.createElement('img');
-            balloon.src = 'https://i.imgur.com/3y0Kc6v.png'; // Replace with your balloon image URL
-            balloon.className = 'balloon';
-            document.body.appendChild(balloon);
-        }
-        // Create confetti
-        for (let i = 0; i < 100; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            confetti.style.animationDelay = Math.random() * 5 + 's';
-            document.body.appendChild(confetti);
-        }
-    </script>
 </body>
 </html>
