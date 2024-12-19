@@ -21,6 +21,14 @@
             font-size: 50px;
             text-shadow: 3px 3px 10px #000;
         }
+        h2 {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            text-shadow: 2px 2px 8px #333;
+        }
         .confetti {
             position: absolute;
             width: 10px;
@@ -41,8 +49,9 @@
 </head>
 <body>
     <h1>🎉 Happy Birthday! 🎉</h1>
+    <h2>Enjoy Your Special Day!</h2>
+
     <script>
-        // Create falling confetti
         function createConfetti() {
             for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
@@ -53,12 +62,10 @@
                 document.body.appendChild(confetti);
             }
         }
-
         function getRandomColor() {
             const colors = ['#f8b195', '#f67280', '#c06c84', '#6c5b7b', '#355c7d'];
             return colors[Math.floor(Math.random() * colors.length)];
         }
-
         createConfetti();
     </script>
 </body>
